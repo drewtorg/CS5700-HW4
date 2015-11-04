@@ -22,6 +22,7 @@ namespace SudokuSolver.Solver
         public bool SolvePuzzle(Puzzle puzzle)
         {
             bool tryAgain = true;
+            
             while (tryAgain)
             {
                 tryAgain = false;

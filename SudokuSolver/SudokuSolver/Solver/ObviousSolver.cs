@@ -27,6 +27,15 @@ namespace SudokuSolver.Solver
                                                               .Single();
                 return true;
             }
+
+            matches = puzzle.BoxAt(r, c).Where(cell => cell.Value == '-').ToList();
+            if (matches.Count == 1)
+            {
+                puzzle.Cells[r, c].Value = puzzle.CharacterSet.Except(puzzle.BoxAt(r, c)
+                                                              .Select(cell => cell.Value))
+                                                              .Single();
+                return true;
+            }
             return false;
         }
     }

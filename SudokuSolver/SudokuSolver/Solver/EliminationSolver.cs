@@ -14,6 +14,7 @@ namespace SudokuSolver.Solver
 
             var row = puzzle.RowAt(r);
             var col = puzzle.ColumnAt(c);
+            var box = puzzle.BoxAt(r, c);
 
             for (int i = 0; i < puzzle.TotalRows; i++)
             {
@@ -22,6 +23,9 @@ namespace SudokuSolver.Solver
 
                 if (possibilities.Contains(col[i].Value))
                     possibilities.Remove(col[i].Value);
+
+                if (possibilities.Contains(box[i].Value))
+                    possibilities.Remove(box[i].Value);
             }
 
             if (possibilities.Count == 1)

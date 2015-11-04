@@ -27,6 +27,18 @@ namespace SudokuSolver.Solver
             return row;
         }
 
+        public Cell[] BoxAt(int r, int c)
+        {
+            int cellSize = (int) Math.Sqrt(TotalRows);
+            List<Cell> box = new List<Cell>(TotalRows);
+            int rowNum = (r / cellSize) * cellSize;
+            int colNum = (c / cellSize) * cellSize;
+            for (int i = rowNum; i < rowNum + cellSize; i++)
+                for (int j = colNum; j < colNum + cellSize; j++)
+                    box.Add(Cells[i, j]);
+            return box.ToArray();
+        }
+
         public Puzzle(int numRows, string charSet, string[] rows)
         {
             TotalRows = numRows;
@@ -38,11 +50,15 @@ namespace SudokuSolver.Solver
         {
             StringBuilder builder = new StringBuilder();
             builder.AppendLine(TotalRows.ToString());
-            //builder.AppendLine(new string(CharacterSet.));
+            foreach(char mander in CharacterSet)
+                builder.Append(mander + " ");
+            builder.AppendLine();
             for (int i = 0; i < TotalRows; i++)
             {
                 for (int j = 0; j < TotalRows; j++)
+                {
                     builder.AppendFormat("{0} ", Cells[i, j].Value);
+                }
                 builder.AppendLine();
             }
             return builder.ToString();

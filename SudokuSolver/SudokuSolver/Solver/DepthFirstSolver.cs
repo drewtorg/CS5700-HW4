@@ -48,6 +48,7 @@ namespace SudokuSolver.Solver
         {
             var row = puzzle.RowAt(r);
             var col = puzzle.ColumnAt(c);
+            var box = puzzle.BoxAt(r, c);
 
             for (int i = 0; i < puzzle.TotalRows; i++)
             {
@@ -55,6 +56,9 @@ namespace SudokuSolver.Solver
                     return false;
 
                 if (col[i].Value == value)
+                    return false;
+
+                if (box[i].Value == value)
                     return false;
             }
 
