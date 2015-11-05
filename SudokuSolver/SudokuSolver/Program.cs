@@ -16,12 +16,9 @@ namespace SudokuSolver
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainForm());
-            Puzzle p = PuzzleReader.ReadPuzzle("easy9x9.txt");
-            p.Solve();
-            Console.WriteLine(p.ToString());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
         }
     }
 }
