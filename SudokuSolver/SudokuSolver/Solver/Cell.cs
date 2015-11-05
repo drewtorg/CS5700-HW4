@@ -9,16 +9,22 @@ namespace SudokuSolver.Solver
 {
     public class Cell
     {
-        public Point Location { get { return new Point(X, Y); } }
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public Point Location { get { return new Point(Row, Column); } }
+        public int Row { get; private set; }
+        public int Column { get; private set; }
         public char Value { get; set; }
 
-        public Cell(char c, int x, int y)
+        public Cell(char val, int r, int c)
         {
-            Value = c;
-            X = x;
-            Y = y;
+            Value = val;
+            Row = r;
+            Column = r;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as Cell;
+            return Value == other.Value && Row == other.Row && Column == other.Column;
         }
     }
 }

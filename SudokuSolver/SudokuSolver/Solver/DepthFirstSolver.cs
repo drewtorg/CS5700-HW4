@@ -15,12 +15,7 @@ namespace SudokuSolver.Solver
 
             if (puzzle.Cells[r, c].Value != '-')
             {
-                if (c == puzzle.TotalRows - 1)
-                {
-                    if (SolveCell(puzzle, r + 1, 0))
-                        return true;
-                }
-                else if (SolveCell(puzzle, r, c + 1))
+                if (SolveNext(puzzle, r, c))
                     return true;
                 return false;
             }
@@ -30,17 +25,25 @@ namespace SudokuSolver.Solver
                 if (IsValidMove(puzzle, r, c, nextValue))
                 {
                     puzzle.Cells[r, c].Value = nextValue;
-                    if (c == puzzle.TotalRows - 1)
-                    {
-                        if (SolveCell(puzzle, r + 1, 0))
-                            return true;
-                    }
-                    else if (SolveCell(puzzle, r, c + 1))
+                    if (SolveNext(puzzle, r, c))
                         return true;
                 }
             }
 
             puzzle.Cells[r, c].Value = '-';
+            return false;
+        }
+
+        private bool SolveNext(Puzzle puzzle, int r, int c)
+        {
+            if (c == puzzle.TotalRows - 1)
+            {
+                if (SolveCell(puzzle, r + 1, 0))
+                    return true;
+            }
+            else if (SolveCell(puzzle, r, c + 1))
+                return true;
+
             return false;
         }
 
@@ -50,19 +53,9 @@ namespace SudokuSolver.Solver
             var col = puzzle.ColumnAt(c);
             var box = puzzle.BoxAt(r, c);
 
-            for (int i = 0; i < puzzle.TotalRows; i++)
-            {
-                if (row[i].Value == value)
-                    return false;
-
-                if (col[i].Value == value)
-                    return false;
-
-                if (box[i].Value == value)
-                    return false;
-            }
-
-            return true;
+            return !(row.Any(cell => cell.Value == value) ||
+                     col.Any(cell => cell.Value == value) || 
+                     box.Any(cell => cell.Value == value));
         }
     }
 }

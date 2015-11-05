@@ -10,7 +10,7 @@ namespace SudokuSolver.Solver
     {
         public override bool SolveCell(Puzzle puzzle, int r, int c)
         {
-            var possibilities = new List<char>(puzzle.CharacterSet);
+            var charSet = new List<char>(puzzle.CharacterSet);
 
             var row = puzzle.RowAt(r);
             var col = puzzle.ColumnAt(c);
@@ -18,19 +18,16 @@ namespace SudokuSolver.Solver
 
             for (int i = 0; i < puzzle.TotalRows; i++)
             {
-                if (possibilities.Contains(row[i].Value))
-                    possibilities.Remove(row[i].Value);
-
-                if (possibilities.Contains(col[i].Value))
-                    possibilities.Remove(col[i].Value);
-
-                if (possibilities.Contains(box[i].Value))
-                    possibilities.Remove(box[i].Value);
+                if (charSet.Contains(row[i].Value) || 
+                    charSet.Contains(col[i].Value) || 
+                    charSet.Contains(box[i].Value))
+                        charSet.Remove(row[i].Value);
+                
             }
 
-            if (possibilities.Count == 1)
+            if (charSet.Count == 1)
             {
-                puzzle.Cells[r, c].Value = possibilities.Single();
+                puzzle.Cells[r, c].Value = charSet.Single();
                 return true;
             }
             return false;

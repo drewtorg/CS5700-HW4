@@ -11,17 +11,25 @@ namespace SudokuSolver.Solver
     {
         public static Puzzle ReadPuzzle(string filename)
         {
-            using (var reader = File.OpenText(filename))
-            {
-                int numRows = int.Parse(reader.ReadLine());
-                string charSet = reader.ReadLine().Replace(" ", "");
-
-                string[] rows = new string[numRows];
-                for(int i = 0; i < numRows; i++)
+            if (filename == null)
+                return null;
+            try {
+                using (var reader = File.OpenText(filename))
                 {
-                    rows[i] = reader.ReadLine().Replace(" ", "");
+                    int numRows = int.Parse(reader.ReadLine());
+                    string charSet = reader.ReadLine().Replace(" ", "");
+
+                    string[] rows = new string[numRows];
+                    for (int i = 0; i < numRows; i++)
+                    {
+                        rows[i] = reader.ReadLine().Replace(" ", "");
+                    }
+                    return new Puzzle(numRows, charSet, rows);
                 }
-                return new Puzzle(numRows, charSet, rows);
+            }
+            catch
+            {
+                return null;
             }
         }
     }

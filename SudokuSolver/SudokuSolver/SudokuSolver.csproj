@@ -58,11 +58,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solver\Cell.cs" />
-    <Compile Include="Solver\CellSet.cs" />
     <Compile Include="Solver\DepthFirstSolver.cs" />
     <Compile Include="Solver\EliminationSolver.cs" />
     <Compile Include="Solver\Solver.cs" />
-    <Compile Include="Solver\ObviousSolver.cs" />
+    <Compile Include="Solver\OneLeftSolver.cs" />
     <Compile Include="Solver\Puzzle.cs" />
     <Compile Include="Solver\PuzzleReader.cs" />
     <EmbeddedResource Include="MainForm.resx">
