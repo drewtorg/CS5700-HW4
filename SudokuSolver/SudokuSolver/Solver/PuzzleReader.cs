@@ -22,8 +22,13 @@ namespace SudokuSolver.Solver
                     string[] rows = new string[numRows];
                     for (int i = 0; i < numRows; i++)
                     {
-                        rows[i] = reader.ReadLine().Replace(" ", "");
+                        string input = reader.ReadLine().Replace(" ", "");
+                        if (input != string.Empty)
+                            rows[i] = input;
+                        else
+                            return null;
                     }
+
                     return new Puzzle(numRows, charSet, rows);
                 }
             }

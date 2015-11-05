@@ -39,6 +39,11 @@
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "txt";
+            this.saveFileDialog.Filter = "\"Text Files|*.txt\"";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {

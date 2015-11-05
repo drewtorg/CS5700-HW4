@@ -18,7 +18,7 @@ namespace SudokuSolver.Solver
         {
             Value = val;
             Row = r;
-            Column = r;
+            Column = c;
         }
 
         public override bool Equals(object obj)
