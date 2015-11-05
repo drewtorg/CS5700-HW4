@@ -92,9 +92,6 @@ namespace SudokuSolver.Solver
             Solver solver = new OneLeftSolver();
             solved = solver.SolvePuzzle(this) ? true : solved;
 
-            solver = new EliminationSolver();
-            solved = solver.SolvePuzzle(this) ? true : solved;
-
             solver = new DepthFirstSolver();
             solved = solver.SolvePuzzle(this) ? true : solved;
             

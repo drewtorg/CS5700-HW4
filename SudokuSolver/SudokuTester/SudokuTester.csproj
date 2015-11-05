@@ -53,6 +53,7 @@
     <Compile Include="PuzzleReaderTester.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuzzleTester.cs" />
+    <Compile Include="SolverTester.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SudokuSolver\SudokuSolver.csproj">
