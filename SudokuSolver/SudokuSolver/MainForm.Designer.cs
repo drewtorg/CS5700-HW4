@@ -80,7 +80,7 @@
             // solveButton
             // 
             this.solveButton.Enabled = false;
-            this.solveButton.Location = new System.Drawing.Point(217, 51);
+            this.solveButton.Location = new System.Drawing.Point(200, 27);
             this.solveButton.Name = "solveButton";
             this.solveButton.Size = new System.Drawing.Size(75, 23);
             this.solveButton.TabIndex = 2;
@@ -101,7 +101,7 @@
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tablePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tablePanel.Location = new System.Drawing.Point(74, 80);
+            this.tablePanel.Location = new System.Drawing.Point(57, 56);
             this.tablePanel.Name = "tablePanel";
             this.tablePanel.RowCount = 2;
             this.tablePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));

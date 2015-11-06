@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace SudokuSolver.Solver
 {
@@ -11,6 +12,11 @@ namespace SudokuSolver.Solver
         public int TotalRows { get; }
         public List<char> CharacterSet { get; }
         public Cell[,] Cells { get; set; }
+        public int CellSize { get { return (int)Math.Sqrt(TotalRows); } }
+        public Point BoxLocationAt(int r, int c)
+        {
+            return new Point((r / CellSize) * CellSize, (c / CellSize) * CellSize);
+        }
 
         public Cell[] ColumnAt(int col)
         {
@@ -42,15 +48,13 @@ namespace SudokuSolver.Solver
         {
             if (c < 0 || c > TotalRows - 1 || r < 0 || r > TotalRows - 1)
                 return null;
-
-            int cellSize = (int) Math.Sqrt(TotalRows);
+            
             List<Cell> box = new List<Cell>(TotalRows);
 
-            int rowNum = (r / cellSize) * cellSize;
-            int colNum = (c / cellSize) * cellSize;
+            Point boxNum = BoxLocationAt(r, c);
 
-            for (int i = rowNum; i < rowNum + cellSize; i++)
-                for (int j = colNum; j < colNum + cellSize; j++)
+            for (int i = boxNum.X; i < boxNum.X + CellSize; i++)
+                for (int j = boxNum.Y; j < boxNum.Y + CellSize; j++)
                     box.Add(Cells[i, j]);
 
             return box.ToArray();
