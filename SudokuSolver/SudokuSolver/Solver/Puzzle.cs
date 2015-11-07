@@ -12,10 +12,10 @@ namespace SudokuSolver.Solver
         public int TotalRows { get; }
         public List<char> CharacterSet { get; }
         public Cell[,] Cells { get; set; }
-        public int CellSize { get { return (int)Math.Sqrt(TotalRows); } }
+        public int BoxSize { get { return (int)Math.Sqrt(TotalRows); } }
         public Point BoxLocationAt(int r, int c)
         {
-            return new Point((r / CellSize) * CellSize, (c / CellSize) * CellSize);
+            return new Point((r / BoxSize) * BoxSize, (c / BoxSize) * BoxSize);
         }
 
         public Cell[] ColumnAt(int col)
@@ -53,8 +53,8 @@ namespace SudokuSolver.Solver
 
             Point boxNum = BoxLocationAt(r, c);
 
-            for (int i = boxNum.X; i < boxNum.X + CellSize; i++)
-                for (int j = boxNum.Y; j < boxNum.Y + CellSize; j++)
+            for (int i = boxNum.X; i < boxNum.X + BoxSize; i++)
+                for (int j = boxNum.Y; j < boxNum.Y + BoxSize; j++)
                     box.Add(Cells[i, j]);
 
             return box.ToArray();
